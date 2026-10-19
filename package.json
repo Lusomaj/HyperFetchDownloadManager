@@ -1,0 +1,71 @@
+{
+  "name": "hyperfetch-idm",
+  "version": "1.0.0",
+  "description": "High-performance multi-segmented dynamic download manager with real-time connection visualizer",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently -k -n \"VITE,MAIN,APP\" -c \"cyan,magenta,green\" \"npm run dev:vite\" \"npm run dev:main\" \"npm run dev:electron\"",
+    "dev:web": "concurrently -k -n \"SERVER,VITE\" -c \"magenta,cyan\" \"node dist/main/server.js\" \"vite\"",
+    "dev:vite": "vite",
+    "dev:main": "node build.js --watch",
+    "dev:electron": "node wait-and-launch.js",
+    "build": "vite build && node build.js",
+    "dist": "npm run build && electron-builder --win",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "idm",
+    "download-manager",
+    "multi-segmented",
+    "accelerator",
+    "electron",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lucide-react": "^0.344.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "@types/ws": "^8.5.10",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3",
+    "esbuild": "^0.19.12",
+    "typescript": "^5.3.3",
+    "vite": "^5.4.11",
+    "ws": "^8.16.0"
+  },
+  "build": {
+    "appId": "com.hyperfetch.idm",
+    "productName": "HyperFetch IDM",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}
