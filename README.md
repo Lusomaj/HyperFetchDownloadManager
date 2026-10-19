@@ -1,4 +1,4 @@
-# HyperFetch — IDM (Internet Download Manager) Clone
+# HyperFetch - Internet Download Manager
 
 An advanced multi-segmented download accelerator built with **Node.js, TypeScript, React, and Electron**, designed to replicate and modernize the core features of **Internet Download Manager (IDM)**.
 
